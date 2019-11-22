@@ -1,0 +1,11 @@
+/* Bootstrap */
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
+
+/* Layout */
+.h-100vh { height: 100vh; }
+.w-20rem { width: 20rem; }
+
+/* Texte */
+q { quotes: '\00ab\00a0' '\00a0\00bb'; }
+q::before { content: open-quote; }
+q::after { content: close-quote; }
