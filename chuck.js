@@ -18,10 +18,10 @@ let app = new Vue({
         chucking() {
             let chucked = this.joke;
             if (this.firstName) {
-                chucked = chucked.replace(/Chuck/i, this.firstName, this.joke);
+                chucked = chucked.replace(/Chuck/g, this.firstName, this.joke);
             }
             if (this.lastName) {
-                chucked = chucked.replace(/Norris/i, this.lastName, this.joke);
+                chucked = chucked.replace(/Norris/g, this.lastName, this.joke);
             }
             return chucked;
         }
