@@ -31,7 +31,7 @@ let app = new Vue({
         *   Fetches a fact from the Chuck Norris Fact API
         */
         fetchJoke() {
-            let url = 'http://api.icndb.com/jokes/random';
+            let url = 'https://api.icndb.com/jokes/random';
             fetch(url)
                 .then(stream => stream.json())
                 .then(data => {
