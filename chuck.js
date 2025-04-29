@@ -1,43 +1,30 @@
-// main.js
 let app = new Vue({
     el: '#app',
     data: {
         joke: null,
-        firstName: null,
-        lastName: null
+        originalJoke: null,
+        name: ''
     },
     mounted() {
-        // Retrieves a fact
         this.fetchJoke();
     },
     computed: {
-        /*
-        *   Changes on the fly the first and last names
-        *   of Chuck Norris by those entered by the user.
-        */
         chucking() {
-            let chucked = this.joke;
-            if (this.firstName) {
-                chucked = chucked.replace(/Chuck/g, this.firstName, this.joke);
+            let chucked = this.originalJoke;
+            if (this.name && chucked) {
+                chucked = chucked.replace(/\bChuck Norris\b/g, this.name);
             }
-            if (this.lastName) {
-                chucked = chucked.replace(/Norris/g, this.lastName, this.joke);
-            }
-            return chucked;
+            return chucked || '';
         }
     },
     methods: {
-        /*
-        *   Fetches a fact from the Chuck Norris Fact API
-        */
         fetchJoke() {
-            let url = 'https://api.icndb.com/jokes/random';
+            let url = 'https://api.chucknorris.io/jokes/random';
             fetch(url)
                 .then(stream => stream.json())
                 .then(data => {
-                    this.joke = data.value.joke;
-                })
-            ;
+                    this.originalJoke = data.value;
+                });
         }
     }
 });
